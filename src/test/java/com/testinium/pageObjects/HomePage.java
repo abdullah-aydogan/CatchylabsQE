@@ -29,7 +29,10 @@ public class HomePage extends BasePage {
     WebElement accountNameInput;
 
     @FindBy(xpath = "//div[contains(text(), 'UPDATE')]")
-    public WebElement updateButton;
+    WebElement updateButton;
+
+    @FindBy(xpath = "//div[@tabindex='-1']")
+    public WebElement disabledUpdateButton;
 
     public String checkMyAccountTxt() {
         return myAccountText.getText();

@@ -64,6 +64,6 @@ public class AccountStepDefinition extends BaseTest {
 
     @Then("Update butonunun pasif oldugu kontrol edilir.")
     public void checkInactiveUpdate() {
-        Assert.assertFalse(homePage.updateButton.isEnabled());
+        Assert.assertTrue(homePage.disabledUpdateButton.isDisplayed());
     }
 }
