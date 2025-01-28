@@ -8,7 +8,7 @@ import io.cucumber.testng.CucumberOptions;
         glue = "com.testinium.stepDefinitions",
         monochrome = true,
         tags = "@account",
-        plugin = {"html:target/cucumber.html"}
+        plugin = {"html:reports/cucumberReports/accountTestReport.html"}
 )
 public class AccountTestRunner extends AbstractTestNGCucumberTests {
 
