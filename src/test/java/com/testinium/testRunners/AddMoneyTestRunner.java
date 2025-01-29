@@ -8,7 +8,8 @@ import io.cucumber.testng.CucumberOptions;
         glue = "com.testinium.stepDefinitions",
         monochrome = true,
         tags = "@addMoney",
-        plugin = {"html:reports/cucumberReports/addMoneyTestReport.html"}
+        plugin = {"html:reports/cucumberReports/addMoneyTestReport.html",
+                "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"}
 )
 public class AddMoneyTestRunner extends AbstractTestNGCucumberTests {
 
