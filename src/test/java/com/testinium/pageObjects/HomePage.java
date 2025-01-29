@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 
 public class HomePage extends BasePage {
@@ -18,6 +19,7 @@ public class HomePage extends BasePage {
     }
 
     String amountTxt;
+    String amountTransferTxt;
 
     @FindBy(xpath = "//div[contains(text(), 'My account')]")
     WebElement myAccountText;
@@ -69,6 +71,27 @@ public class HomePage extends BasePage {
 
     @FindBy(xpath = "//*[contains(text(), 'Wrong date')]")
     WebElement wrongDateTxt;
+
+    @FindBy(xpath = "//div[contains(text(), 'Transfer money')]")
+    WebElement transferMoneyButton;
+
+    @FindBy(xpath = "//input[@autocapitalize='sentences']")
+    WebElement amountTransferInput;
+
+    @FindBy(xpath = "//div[@tabindex='-1' and @aria-disabled='true']")
+    WebElement disableSendButton;
+
+    @FindBy(xpath = "(//div[@tabindex='0' and @style='transition-duration: 0s;'])[5]")
+    WebElement sendButton;
+
+    @FindBy(xpath = "(//select)[2]")
+    WebElement receiverAccountSelect;
+
+    @FindBy(xpath = "(//*[contains(@class, 'r-yv33h5')])[4]")
+    WebElement amountText;
+
+    @FindBy(xpath = "//div[contains(text(), 'Internal Error')]")
+    WebElement internalErrorMessage;
 
     public String checkMyAccountTxt() {
         return myAccountText.getText();
@@ -144,5 +167,49 @@ public class HomePage extends BasePage {
 
     public void expiryDateControl() {
         Assert.assertTrue(wrongDateTxt.isDisplayed());
+    }
+
+    public void clickTransferMoneyButton() {
+        transferMoneyButton.click();
+    }
+
+    public void sendAmountTransferInput(String amount) {
+
+        amountTransferInput.sendKeys(amount);
+        amountTransferTxt = amount;
+    }
+
+    public void checkDisableSendButton() {
+        Assert.assertTrue(disableSendButton.isDisplayed());
+    }
+
+    public void selectReceiverAccount(String accountName) {
+
+        Select select = new Select(receiverAccountSelect);
+        select.selectByVisibleText(accountName);
+    }
+
+    public String getAmountText() {
+        return amountText.getText();
+    }
+
+    public void clickSendButton() {
+        sendButton.click();
+    }
+
+    public void checkTransferTransaction() {
+        Assert.assertEquals(transactionAmountTxt.getText(), amountTransferTxt);
+    }
+
+    public void sendEmptyAmount() {
+        amountTransferInput.sendKeys("");
+    }
+
+    public void checkInternalErrorMessage() {
+        Assert.assertTrue(internalErrorMessage.isDisplayed());
+    }
+
+    public void sendTooMuchAmount(String amount) {
+        amountTransferInput.sendKeys(amount + "0");
     }
 }
