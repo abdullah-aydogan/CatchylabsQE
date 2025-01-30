@@ -5,6 +5,10 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.Properties;
+
 public class LoginPage extends BasePage {
 
     WebDriver driver;
@@ -50,7 +54,16 @@ public class LoginPage extends BasePage {
         return errorMessage.getText();
     }
 
-    public void goTo() {
-        driver.get("https://catchylabs-webclient.testinium.com/");
+    public void goTo() throws IOException {
+
+        Properties prop = new Properties();
+
+        FileInputStream fis = new FileInputStream(System.getProperty("user.dir")
+                + "/src/test/resources/globalData.properties");
+
+        prop.load(fis);
+
+        String url = prop.getProperty("url");
+        driver.get(url);
     }
 }

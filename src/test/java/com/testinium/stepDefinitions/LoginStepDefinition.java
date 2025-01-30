@@ -10,6 +10,8 @@ import io.cucumber.java.en.When;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
+import java.io.IOException;
+
 public class LoginStepDefinition extends BaseTest {
 
     WebDriver driver = Hooks.driver;
@@ -17,7 +19,7 @@ public class LoginStepDefinition extends BaseTest {
     public ChallangePage challangePage;
 
     @Given("Catchylabs giris ekranina gidilir.")
-    public void goToLoginPage() {
+    public void goToLoginPage() throws IOException {
 
         loginPage = new LoginPage(driver);
         loginPage.goTo();

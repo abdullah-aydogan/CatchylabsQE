@@ -11,6 +11,8 @@ import io.cucumber.java.en.When;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
+import java.io.IOException;
+
 public class AccountStepDefinition extends BaseTest {
 
     WebDriver driver = Hooks.driver;
@@ -19,7 +21,7 @@ public class AccountStepDefinition extends BaseTest {
     public HomePage homePage;
 
     @Given("Catchylabs hesabina giris yapilir.")
-    public void loginCatchylabs() {
+    public void loginCatchylabs() throws IOException {
 
         loginPage = new LoginPage(driver);
 

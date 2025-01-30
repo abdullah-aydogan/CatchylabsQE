@@ -10,6 +10,8 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.WebDriver;
 
+import java.io.IOException;
+
 public class MoneyTransferStepDefinition extends BaseTest {
 
     WebDriver driver = Hooks.driver;
@@ -20,7 +22,7 @@ public class MoneyTransferStepDefinition extends BaseTest {
     String amount;
 
     @Given("Catchylabs hesabina girilir")
-    public void loginCatchylabs() {
+    public void loginCatchylabs() throws IOException {
 
         loginPage = new LoginPage(driver);
 
