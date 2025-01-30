@@ -4,14 +4,15 @@ import com.testinium.pageObjects.ChallangePage;
 import com.testinium.pageObjects.HomePage;
 import com.testinium.pageObjects.LoginPage;
 import com.testinium.testComponents.BaseTest;
+import com.testinium.testComponents.Hooks;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-
-import java.io.IOException;
+import org.openqa.selenium.WebDriver;
 
 public class MoneyTransferStepDefinition extends BaseTest {
 
+    WebDriver driver = Hooks.driver;
     public LoginPage loginPage;
     public ChallangePage challangePage;
     public HomePage homePage;
@@ -19,9 +20,11 @@ public class MoneyTransferStepDefinition extends BaseTest {
     String amount;
 
     @Given("Catchylabs hesabina girilir")
-    public void loginCatchylabs() throws IOException {
+    public void loginCatchylabs() {
 
-        loginPage = launchApplication();
+        loginPage = new LoginPage(driver);
+
+        loginPage.goTo();
         loginPage.sendTextUsernameField("abdullah.aydogan");
         loginPage.sendTextPasswordField("@bdullahOtok@r05");
 

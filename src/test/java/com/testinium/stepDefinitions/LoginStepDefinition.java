@@ -3,22 +3,24 @@ package com.testinium.stepDefinitions;
 import com.testinium.pageObjects.ChallangePage;
 import com.testinium.pageObjects.LoginPage;
 import com.testinium.testComponents.BaseTest;
+import com.testinium.testComponents.Hooks;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
-
-import java.io.IOException;
 
 public class LoginStepDefinition extends BaseTest {
 
+    WebDriver driver = Hooks.driver;
     public LoginPage loginPage;
     public ChallangePage challangePage;
 
     @Given("Catchylabs giris ekranina gidilir.")
-    public void goToLoginPage() throws IOException {
-        loginPage = launchApplication();
+    public void goToLoginPage() {
+
+        loginPage = new LoginPage(driver);
+        loginPage.goTo();
     }
 
     @Given("^Username alanina (.+) yazilir.$")

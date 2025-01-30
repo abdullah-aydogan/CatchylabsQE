@@ -2,7 +2,6 @@ package com.testinium.testComponents;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.testinium.pageObjects.LoginPage;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
@@ -10,9 +9,6 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.safari.SafariDriver;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -25,8 +21,7 @@ import java.util.Properties;
 
 public class BaseTest {
 
-    public WebDriver driver;
-    public LoginPage loginPage;
+    public static WebDriver driver;
 
     public WebDriver initializeDriver() throws IOException {
 
@@ -68,31 +63,18 @@ public class BaseTest {
         return data;
     }
 
-    public String getScreenshot(String testCaseName, WebDriver driver) throws IOException {
+    public void takeScreenshot(String testCaseName, WebDriver driver) throws IOException {
 
         TakesScreenshot ts = (TakesScreenshot) driver;
         File source = ts.getScreenshotAs(OutputType.FILE);
 
         File file = new File(System.getProperty("user.dir")
-                + "/reports/" + testCaseName + ".png");
+                + "/target/screenshots/" + testCaseName + ".png");
 
         FileUtils.copyFile(source, file);
-
-        return System.getProperty("user.dir") + "/reports/" + testCaseName + ".png";
     }
 
-    @BeforeMethod(alwaysRun = true)
-    public LoginPage launchApplication() throws IOException {
-
-        driver = initializeDriver();
-        loginPage = new LoginPage(driver);
-
-        loginPage.goTo();
-        return loginPage;
-    }
-
-    @AfterMethod(alwaysRun = true)
-    public void tearDown() {
-        driver.close();
+    public static byte[] takeScreenshotCucumberReport(WebDriver driver) {
+        return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
     }
 }

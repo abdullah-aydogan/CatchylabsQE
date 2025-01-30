@@ -5,7 +5,9 @@ import io.cucumber.testng.CucumberOptions;
 
 @CucumberOptions(
         features = "src/test/java/com/testinium/features",
-        glue = "com.testinium.stepDefinitions",
+        glue = {"com.testinium.stepDefinitions",
+                "com.testinium.testComponents"
+        },
         monochrome = true,
         tags = "@account",
         plugin = {"html:reports/cucumberReports/accountTestReport.html",

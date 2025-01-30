@@ -4,23 +4,26 @@ import com.testinium.pageObjects.ChallangePage;
 import com.testinium.pageObjects.HomePage;
 import com.testinium.pageObjects.LoginPage;
 import com.testinium.testComponents.BaseTest;
+import com.testinium.testComponents.Hooks;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
-
-import java.io.IOException;
 
 public class AccountStepDefinition extends BaseTest {
 
+    WebDriver driver = Hooks.driver;
     public LoginPage loginPage;
     public ChallangePage challangePage;
     public HomePage homePage;
 
     @Given("Catchylabs hesabina giris yapilir.")
-    public void loginCatchylabs() throws IOException {
+    public void loginCatchylabs() {
 
-        loginPage = launchApplication();
+        loginPage = new LoginPage(driver);
+
+        loginPage.goTo();
         loginPage.sendTextUsernameField("abdullah.aydogan");
         loginPage.sendTextPasswordField("@bdullahOtok@r05");
 
