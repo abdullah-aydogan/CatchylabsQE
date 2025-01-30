@@ -16,7 +16,7 @@ Bu proje, **Cucumber** ve **Java** kullanarak otomasyon testleri yazmak için ol
 │   │   │   ├── testComponents  # BaseTest ve Hooks sınıfları
 │   │   │   ├── testRunners  # Test çalıştırıcıları
 │   │   ├── resources
-│   │   │   ├── extent.properties # ExtentReport dosyası
+│   │   │   ├── extent.properties # ExtentReports dosyası
 │   │   │   ├── globalData.properties # Data dosyası
 │   │   │   ├── logback.xml # Log kaydı için konfigürasyon
 ├── pom.xml  # Maven bağımlılıkları
@@ -64,13 +64,13 @@ mvn test -Dbrowser=chrome
 - **Java**
 - **Cucumber**
 - **TestNG**
-- **ExtentReport**
+- **ExtentReports**
 - **Selenium WebDriver**
 - **Maven**
 
-## ℹ️ ExtentReport İçin Bilgi
+## ℹ️ ExtentReports İçin Bilgi
 
-ExtentReport, rapor oluştururken İngilizce diline ayarlanmış işletim sistemlerinde çalışmaktadır. Türkçe karakter sorunundan dolayı Türkçe diline ayarlanmış işletim sistemlerinde raporu oluşturmamaktadır.
+ExtentReports, rapor oluştururken İngilizce diline ayarlanmış işletim sistemlerinde çalışmaktadır. Türkçe karakter sorunundan dolayı Türkçe diline ayarlanmış işletim sistemlerinde raporu oluşturmamaktadır.
 
 ## 📜 Örnek Feature Dosyası
 
@@ -95,4 +95,3 @@ ExtentReport, rapor oluştururken İngilizce diline ayarlanmış işletim sistem
 ## 📞 Destek
 
 Herhangi bir sorun yaşarsanız, lütfen bir **issue** oluşturun veya proje ekibiyle iletişime geçin.
-
