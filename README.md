@@ -68,6 +68,10 @@ mvn test -Dbrowser=chrome
 - **Selenium WebDriver**
 - **Maven**
 
+## ℹ️ ExtentReport İçin Bilgi
+
+ExtentReport, rapor oluştururken İngilizce diline ayarlanmış işletim sistemlerinde çalışmaktadır. Türkçe karakter sorunundan dolayı Türkçe diline ayarlanmış işletim sistemlerinde raporu oluşturmamaktadır.
+
 ## 📜 Örnek Feature Dosyası
 
 ```gherkin
